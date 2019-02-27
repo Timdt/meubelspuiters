@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>meubelspuiter 300x600</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+
+      <style>
+      body {
+
+      }
+
+      #container {
+        width:728px;
+        height:90px;
+        border:solid black 1px;
+
+        padding-top:0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        background-image:url('background.jpg');
+
+
+      }
+
+      #afb1{
+        margin:0px;
+        padding:0px;
+        border:0px;
+        overflow:hidden;
+        width:133px;
+        height:79px;
+        margin-top:4px;
+        margin-left: 5px;
+        display: inline-block;
+
+
+
+      }
+
+    /*  #afb2{
+        margin:0px;
+        padding:0px;
+        border:0px;
+        width:96%;
+        height:150px;
+        overflow:hidden;
+        margin-top: 2px;
+      }
+      */
+
+      #teksthouder {
+        margin:0px;
+        padding:0px;
+        width:159px;
+        height:63px;
+        display: inline-block;
+        margin-bottom: 5px;
+        overflow:hidden;
+
+
+
+
+      }
+
+      #buttonhouder{
+        padding:0px;
+        width:139px;
+        height:34px;
+        display: inline-block;
+        margin-top: 0px;
+        margin-left:10px;
+
+
+      }
+
+      #socialshouder {
+        width: 100%;
+        height:90px;
+
+      }
+
+      #button {
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      #tekshoudercanvas{
+        margin-bottom: 20px;
+      }
+/*
+      .uw {
+      font-size: 40px;
+      font-family: 'pacifico';
+      margin:0px;
+      padding:0px;
+      border:0px;
+
+
+
+      }
+
+      .keuken{
+      font-size: 40px;
+      font-family: 'pacifico';
+      margin:0px;
+      padding:0px;
+      border:0px;
+
+      }
+
+      .weer {
+      font-size: 40px;
+      font-family: 'pacifico';
+      height:5px;
+      margin:0px;
+      padding:0px;
+      border:0px;
+      line-height: 5px;
+      }
+
+    .als {
+      font-size: 40px;
+      font-family: 'pacifico';
+      margin:0px;
+      padding:0px;
+      border:0px;
+      line-height: 5px;
+    }
+
+    .nieuw{
+      font-size: 40px;
+      font-family: 'pacifico';
+      margin:0px;
+      padding:0px;
+      border:0px;
+      line-height: 5px;
+    }
+    */
+
+    .break {
+      margin:0px;
+      padding:0px;
+      border:0px;
+      line-height: 0px;
+    }
+
+    .tekstafb{
+    margin-left:7px;
+    margin-bottom:7px;
+    overflow:hidden;
+    }
+
+      </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="afb1">
+        <img class="slide1" src="keukenvoor.jpg" />
+      </div> <!-- div voor afbeelding 1 -->
+
+    <div id="teksthouder">
+
+      <img class="tekstafb" src="keuken.jpg" />
+       <!--<canvas class="tekshoudercanvas" width=auto height=100></canvas> -->
+    <!--  <span class="uw"> Uw</span>
+      <span class="keuken"> keuken       </span>
+      <br class="break">
+      <span class="weer">weer</span>
+      <span class="als"> als       </span>
+      <span class="nieuw"> nieuw       </span>
+  -->
+    </div>
+
+    <div id="buttonhouder" >
+      <img id="button" src="button.jpg" alt="actieknop">
+    </div> <!-- dit is de plek voor de button -->
+
+    <div id="socialshouder">
+    </div>
+
+
+  </div> <!-- dit is de div van de container -->
+
+
+<script>
+
+
+
+var tl = new TimelineMax()
+tl.from('.slide1',1,{x:-200,opacity:0})
+tl.from('.slide2',1,{x:200,opacity:0}, '-=0.6')
+//tl.from('.uw',0.5,{opacity:0,scale:0})
+//tl.from('.keuken',0.5,{opacity:0,scale:0},'-=0.2')
+//tl.from('.weer',0.5,{opacity:0,scale:0},'-=0.2')
+//tl.from('.als',0.5,{opacity:0,scale:0},'-=0.2')
+tl.from('.tekstafb',0.5,{opacity:0,onComplete:shake},'-=0.9')
+
+
+
+
+
+/*function letters (){
+  var letterbreak = new TimelineMax()
+  tl.from('.uw',0.2,{opacity:0,scale:0})
+  tl.from('.keuken',0.2,{opacity:0,scale:0},'-=0.1')
+  tl.from('.weer',0.2,{opacity:0,scale:0},'-=0.1')
+  tl.from('.als',0.2,{opacity:0,scale:0},'-=0.1')
+  tl.from('.nieuw',0.2,{opacity:0,scale:0,onComplete:shake},'-=0.1')
+}
+*/
+
+
+function shake(){
+  var shakebutton= new TimelineMax();
+      shakebutton.from("#button",0.5,{x:-10,ease:Bounce.easeOut,repeat:2,repeatDelay:2.5,onComplete:stoppen});
+
+}
+
+
+function stoppen(){
+  tl.restart();
+  console.log("timeline restarted");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+// get 2D context
+  var ctx = document.querySelector("canvas").getContext("2d"),
+
+      // dash-length for off-range
+        dashLen = 150,
+
+    // we'll update this, initialize
+        dashOffset = dashLen,
+
+    // some arbitrary speed
+        speed = 5,
+
+    // the text we will draw
+        txt = "Uw keuken weer als nieuw",
+
+    // start position for x and iterator
+    x = 10, i = 0;
+
+
+    // Comic Sans?? Let's make it useful for something ;) w/ fallbacks
+   ctx.font = "40px Pacifico";
+
+ // thickness of the line
+   ctx.lineWidth = 0.8;
+
+ // to avoid spikes we can join each line with a round joint
+ ctx.lineJoin = "round";
+
+ // increase realism letting background (f.ex. paper) show through
+ ctx.globalAlpha = 3/3;
+
+ // some color, lets use a black pencil
+   ctx.strokeStyle = ctx.fillStyle = "#000";
+
+   (function loop() {
+    // clear canvas for each frame
+    ctx.clearRect(x, 0, 50, 150);
+
+    // calculate and set current line-dash for this char
+    ctx.setLineDash([dashLen - dashOffset, dashOffset - speed]);
+
+    // reduce length of off-dash
+    dashOffset -= speed;
+
+    // draw char to canvas with current dash-length
+    ctx.strokeText(txt[i], x, 90);
+
+    // char done? no, the loop
+    if (dashOffset > 0) requestAnimationFrame(loop);
+    else {
+
+      // ok, outline done, lets fill its interior before next
+      ctx.fillText(txt[i], x, 90);
+
+      // reset line-dash length
+      dashOffset = dashLen;
+
+      // get x position to next char by measuring what we have drawn
+      // notice we offset it a little by random to increase realism
+      x += ctx.measureText(txt[i++]).width + ctx.lineWidth * Math.random();
+
+      // lets use an absolute transform to randomize y-position a little
+      ctx.setTransform(1, 0, 0, 1, 0, 3 * Math.random());
+
+      // and just cause we can, rotate it a little too to make it even
+      // more realistic
+      ctx.rotate(Math.random() * 0.005);
+
+      // if we still have chars left, loop animation again for this char
+      if (i < txt.length) requestAnimationFrame(loop);
+    }
+  })();  // just to self-invoke the loop
+
+*/
+
+</script>
+
+  </body>
+</html>
